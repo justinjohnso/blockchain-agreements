@@ -1,4 +1,5 @@
-# Decentralized Airbnb
+# 2021 Hack Week Project - Blockchain Agreements
+### (Forked from Decentralized Airbnb)
 Setup
 
 1. Install dependencies
