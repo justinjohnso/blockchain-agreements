@@ -8,9 +8,9 @@ npm install
 ```
 
 2. Follow along the instructions to complete the code.
-- Follow [instructions](https://github.com/maticnetwork/ethindia-workshop/blob/master/Instructions.md) to complete the smart contract code.
-- Follow [setup](https://github.com/maticnetwork/ethindia-workshop/blob/master//setup.md) to setup all requirements.
-- Follow [dapps](https://github.com/maticnetwork/ethindia-workshop/blob/master//dapps.md) to complete the DApp code.
+- Follow [instructions](https://github.com/maticnetwork/ethindia-workshop/blob/master/instructions.md) to complete the smart contract code.
+- Follow [setup](https://github.com/maticnetwork/ethindia-workshop/blob/master/setup.md) to setup all requirements.
+- Follow [dapps](https://github.com/maticnetwork/ethindia-workshop/blob/master/dapps.md) to complete the DApp code.
 
 3. Run ethereum blockchain locally
 ```
