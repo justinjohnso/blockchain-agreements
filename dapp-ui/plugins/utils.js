@@ -4,7 +4,7 @@ const Web3 = require("web3");
 let metamaskWeb3 = new Web3("http://localhost:8545");
 let account = null;
 let docagreementsContract;
-let docagreementsContractAddress = ""; // Paste Contract address here
+let docagreementsContractAddress = "0x252e76732fdef3E43fcA597703F33F782abF257E"; // Paste Contract address here
 
 export function web3() {
   return metamaskWeb3;

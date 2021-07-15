@@ -1,67 +1,72 @@
 {
   "abi": [
     {
-      "constant": true,
-      "inputs": [],
-      "name": "bookingId",
-      "outputs": [
+      "constant": false,
+      "inputs": [
         {
-          "name": "",
+          "internalType": "uint256",
+          "name": "_docId",
           "type": "uint256"
         }
       ],
+      "name": "isDocumentSigned",
+      "outputs": [],
       "payable": false,
-      "stateMutability": "view",
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
-      "constant": true,
+      "anonymous": false,
       "inputs": [
         {
-          "name": "",
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "docId",
           "type": "uint256"
         }
       ],
-      "name": "bookings",
-      "outputs": [
+      "name": "NewDocument",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
         {
-          "name": "propertyId",
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_docId",
           "type": "uint256"
         },
         {
-          "name": "checkInDate",
-          "type": "uint256"
+          "indexed": false,
+          "internalType": "bool",
+          "name": "_isSigned",
+          "type": "bool"
+        }
+      ],
+      "name": "isSigned",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
         },
         {
-          "name": "checkoutDate",
-          "type": "uint256"
+          "internalType": "string",
+          "name": "content",
+          "type": "string"
         },
         {
-          "name": "user",
+          "internalType": "address",
+          "name": "signer",
           "type": "address"
         }
       ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "name",
-          "type": "string"
-        },
-        {
-          "name": "description",
-          "type": "string"
-        },
-        {
-          "name": "price",
-          "type": "uint256"
-        }
-      ],
-      "name": "rentOutproperty",
+      "name": "publishDocument",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
@@ -71,44 +76,24 @@
       "constant": false,
       "inputs": [
         {
-          "name": "_propertyId",
+          "internalType": "uint256",
+          "name": "_docId",
           "type": "uint256"
         }
       ],
-      "name": "markPropertyAsInactive",
+      "name": "signDocument",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_propertyId",
-          "type": "uint256"
-        },
-        {
-          "name": "checkInDate",
-          "type": "uint256"
-        },
-        {
-          "name": "checkoutDate",
-          "type": "uint256"
-        }
-      ],
-      "name": "rentProperty",
-      "outputs": [],
-      "payable": true,
-      "stateMutability": "payable",
       "type": "function"
     },
     {
       "constant": true,
       "inputs": [],
-      "name": "propertyId",
+      "name": "docId",
       "outputs": [
         {
+          "internalType": "uint256",
           "name": "",
           "type": "uint256"
         }
@@ -121,65 +106,42 @@
       "constant": true,
       "inputs": [
         {
+          "internalType": "uint256",
           "name": "",
           "type": "uint256"
         }
       ],
-      "name": "properties",
+      "name": "documents",
       "outputs": [
         {
+          "internalType": "string",
           "name": "name",
           "type": "string"
         },
         {
-          "name": "description",
+          "internalType": "string",
+          "name": "content",
           "type": "string"
         },
         {
-          "name": "isActive",
+          "internalType": "bool",
+          "name": "isSigned",
           "type": "bool"
         },
         {
-          "name": "price",
-          "type": "uint256"
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
         },
         {
-          "name": "owner",
+          "internalType": "address",
+          "name": "signer",
           "type": "address"
         }
       ],
       "payable": false,
       "stateMutability": "view",
       "type": "function"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "propertyId",
-          "type": "uint256"
-        }
-      ],
-      "name": "NewProperty",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "propertyId",
-          "type": "uint256"
-        },
-        {
-          "indexed": true,
-          "name": "bookingId",
-          "type": "uint256"
-        }
-      ],
-      "name": "NewBooking",
-      "type": "event"
     }
   ]
 }
