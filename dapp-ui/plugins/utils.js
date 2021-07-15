@@ -15,7 +15,7 @@ export const accountAddress = () => {
 };
 
 export async function setProvider() {
-  // TODO: get injected Metamask Object and create Web3 instance
+  // get injected Metamask Object and create Web3 instance
   if (window.ethereum) {
     metamaskWeb3 = new Web3(ethereum);
     try {
@@ -31,7 +31,7 @@ export async function setProvider() {
 }
 
 function getAirbnbContract() {
-  // TODO: create and return contract Object
+  // create and return contract Object
   airbnbContract =
     airbnbContract ||
     new metamaskWeb3.eth.Contract(AirbnbABI.abi, airbnbContractAddress);
@@ -39,7 +39,7 @@ function getAirbnbContract() {
 }
 
 export async function postProperty(name, description, price) {
-  // TODO: call Airbnb.rentOutproperty
+  // call Airbnb.rentOutproperty
   const prop = await getAirbnbContract()
     .methods.rentOutproperty(name, description, price)
     .send({
@@ -54,7 +54,7 @@ export async function bookProperty(
   checkOutDate,
   totalPrice
 ) {
-  // TODO: call Airbnb.rentSpace
+  // call Airbnb.rentSpace
   const prop = await getAirbnbContract()
     .methods.rentProperty(spaceId, checkInDate, checkOutDate)
     .send({
@@ -65,7 +65,7 @@ export async function bookProperty(
 }
 
 export async function fetchAllProperties() {
-  // TODO: call Airbnb.propertyId
+  // call Airbnb.propertyId
 
   const propertyId = await getAirbnbContract()
     .methods.propertyId()
