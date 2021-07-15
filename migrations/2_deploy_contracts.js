@@ -1,5 +1,5 @@
-const Airbnb = artifacts.require("Airbnb");
+const DocAgreements = artifacts.require("DocAgreements");
 
 module.exports = function(deployer) {
-  deployer.deploy(Airbnb);
+  deployer.deploy(DocAgreements);
 };
