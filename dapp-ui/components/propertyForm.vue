@@ -9,35 +9,39 @@
 
           <div class="modal-body">
             <slot name="body">
-                <div class="form-group">
-                  <label for="title">Title</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    v-model="title"
-                    placeholder="Enter Title"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="description">Description</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    v-model="description"
-                    placeholder="Description"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="price">Price</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    v-model="price"
-                    placeholder="Price"
-                  />
-                </div>
-                <button v-on:click="postAd" class="btn btn-primary float-right">Submit</button>
-                <!-- <button class="btn btn-outline-secondary float-right mr-3" v-on:click="close">Cancel</button> -->
+              <div class="form-group">
+                <label for="title">Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="title"
+                  placeholder="Enter Title"
+                />
+              </div>
+              <div class="form-group">
+                <label for="content">Content</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="content"
+                  placeholder="Document Content"
+                />
+              </div>
+              <div class="form-group">
+                <label for="signer_address"
+                  >Designated Signer's ETH Address</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="signer_address"
+                  placeholder="Signer's ETH address"
+                />
+              </div>
+              <button v-on:click="postDoc" class="btn btn-primary float-right">
+                Submit
+              </button>
+              <!-- <button class="btn btn-outline-secondary float-right mr-3" v-on:click="close">Cancel</button> -->
             </slot>
           </div>
         </div>
@@ -53,19 +57,17 @@ export default {
   components: {},
   data() {
     return {
-      title: '',
-      description: '',
-      price: '',
-    }
+      title: "",
+      content: "",
+      signer_address: "",
+    };
   },
   methods: {
-    postAd() {
-      // convert price from ETH to Wei
-
-      // call metamask.postProperty
-      
-    }
-  }
+    postDoc() {
+      // call utils.publishDocument
+      publishDocument(this.title, this.content, this.signer_address);
+    },
+  },
 };
 </script>
 
