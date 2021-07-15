@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { postProperty, web3 } from "~/plugins/utils";
+import { publishDocument, web3 } from "~/plugins/utils";
 
 export default {
   components: {},

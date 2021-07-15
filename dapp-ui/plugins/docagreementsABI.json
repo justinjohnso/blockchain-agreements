@@ -1,36 +1,72 @@
 {
-  "abi":  [
+  "abi": [
     {
       "constant": false,
       "inputs": [
         {
-          "name": "_propertyId",
+          "internalType": "uint256",
+          "name": "_docId",
           "type": "uint256"
         }
       ],
-      "name": "markPropertyAsInactive",
+      "name": "isDocumentSigned",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
     },
     {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "docId",
+          "type": "uint256"
+        }
+      ],
+      "name": "NewDocument",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_docId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "_isSigned",
+          "type": "bool"
+        }
+      ],
+      "name": "isSigned",
+      "type": "event"
+    },
+    {
       "constant": false,
       "inputs": [
         {
+          "internalType": "string",
           "name": "name",
           "type": "string"
         },
         {
-          "name": "description",
+          "internalType": "string",
+          "name": "content",
           "type": "string"
         },
         {
-          "name": "price",
-          "type": "uint256"
+          "internalType": "address",
+          "name": "signer",
+          "type": "address"
         }
       ],
-      "name": "rentOutproperty",
+      "name": "publishDocument",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
@@ -40,78 +76,26 @@
       "constant": false,
       "inputs": [
         {
-          "name": "_propertyId",
-          "type": "uint256"
-        },
-        {
-          "name": "checkInDate",
-          "type": "uint256"
-        },
-        {
-          "name": "checkoutDate",
+          "internalType": "uint256",
+          "name": "_docId",
           "type": "uint256"
         }
       ],
-      "name": "rentProperty",
+      "name": "signDocument",
       "outputs": [],
-      "payable": true,
-      "stateMutability": "payable",
+      "payable": false,
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "propertyId",
-          "type": "uint256"
-        }
-      ],
-      "name": "NewProperty",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "propertyId",
-          "type": "uint256"
-        },
-        {
-          "indexed": true,
-          "name": "bookingId",
-          "type": "uint256"
-        }
-      ],
-      "name": "NewBooking",
-      "type": "event"
-    },
-    {
       "constant": true,
-      "inputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "name": "bookings",
+      "inputs": [],
+      "name": "docId",
       "outputs": [
         {
-          "name": "propertyId",
+          "internalType": "uint256",
+          "name": "",
           "type": "uint256"
-        },
-        {
-          "name": "checkInDate",
-          "type": "uint256"
-        },
-        {
-          "name": "checkoutDate",
-          "type": "uint256"
-        },
-        {
-          "name": "user",
-          "type": "address"
         }
       ],
       "payable": false,
@@ -122,30 +106,36 @@
       "constant": true,
       "inputs": [
         {
+          "internalType": "uint256",
           "name": "",
           "type": "uint256"
         }
       ],
-      "name": "properties",
+      "name": "documents",
       "outputs": [
         {
+          "internalType": "string",
           "name": "name",
           "type": "string"
         },
         {
-          "name": "description",
+          "internalType": "string",
+          "name": "content",
           "type": "string"
         },
         {
-          "name": "isActive",
+          "internalType": "bool",
+          "name": "isSigned",
           "type": "bool"
         },
         {
-          "name": "price",
-          "type": "uint256"
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
         },
         {
-          "name": "owner",
+          "internalType": "address",
+          "name": "signer",
           "type": "address"
         }
       ],
