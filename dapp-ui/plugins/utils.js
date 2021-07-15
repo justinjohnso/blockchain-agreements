@@ -1,10 +1,10 @@
-import AirbnbABI from "./airbnbABI";
+import DocAgreementsABI from "./docagreementsABI";
 const Web3 = require("web3");
 
 let metamaskWeb3 = new Web3("http://localhost:8545");
 let account = null;
-let airbnbContract;
-let airbnbContractAddress = "0xE4C8841d9e2892ea09e5571fE8abD3e57E7a23B9"; // Paste Contract address here
+let docagreementsContract;
+let docagreementsContractAddress = ""; // Paste Contract address here
 
 export function web3() {
   return metamaskWeb3;
@@ -30,58 +30,33 @@ export async function setProvider() {
   account = await metamaskWeb3.eth.getAccounts();
 }
 
-function getAirbnbContract() {
-  // create and return contract Object
-  airbnbContract =
-    airbnbContract ||
-    new metamaskWeb3.eth.Contract(AirbnbABI.abi, airbnbContractAddress);
-  return airbnbContract;
+function getDocAgreementContract() {
+  docagreementsContract =
+    docagreementsContract ||
+    new metamaskWeb3.eth.Contract(
+      DocAgreementsABI.abi,
+      docagreementsContractAddress
+    );
+  return docagreementsContract;
 }
 
-export async function postProperty(name, description, price) {
-  // call Airbnb.rentOutproperty
-  const prop = await getAirbnbContract()
-    .methods.rentOutproperty(name, description, price)
-    .send({
-      from: account[0],
-    });
-  alert("Property Posted Successfully");
+export async function publishDocument(name, content, signer) {
+  const prop = await getDocAgreementContract()
+    .methods.publishDocument(name, content, signer)
+    .send({ from: account[0] });
+  alert("Document Posted Successfully");
 }
 
-export async function bookProperty(
-  spaceId,
-  checkInDate,
-  checkOutDate,
-  totalPrice
-) {
-  // call Airbnb.rentSpace
-  const prop = await getAirbnbContract()
-    .methods.rentProperty(spaceId, checkInDate, checkOutDate)
-    .send({
-      from: account[0],
-      value: totalPrice,
-    });
-  alert("Property Booked Successfully");
+export async function signDocument(docId) {
+  const prop = await getDocAgreementContract()
+    .methods.signDocument(docId)
+    .send({ from: account[0] });
+  alert("Document Signed Successfully");
 }
 
-export async function fetchAllProperties() {
-  // call Airbnb.propertyId
-
-  const propertyId = await getAirbnbContract()
-    .methods.propertyId()
-    .call();
-
-  // iterate till property Id
-  const properties = [];
-  for (let i = 0; i < propertyId; i++) {
-    const p = await airbnbContract.methods.properties(i).call();
-    properties.push({
-      id: i,
-      name: p.name,
-      description: p.description,
-      price: metamaskWeb3.utils.fromWei(p.price),
-    });
-  }
-  return properties;
-  // push each object to properties array
-}
+// unsure how to get this to work
+// export async function isDocumentSigned() {
+//   const prop = await getDocAgreementContract().methods.signDocument(docId).send(
+//     {from: account[0]})
+//     alert('Document Signed Successfully')
+// }
