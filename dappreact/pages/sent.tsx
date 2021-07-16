@@ -19,7 +19,6 @@ export default function Sent() {
   }, [web3, isLoading]);
 
   async function handleLoad() {
-    // console.log('loading...')
     const signaturesFromChain = await fetchSentSignatureRequests(web3);
     if (signaturesFromChain !== 'error') {
       setSignatures((signaturesFromChain as any));

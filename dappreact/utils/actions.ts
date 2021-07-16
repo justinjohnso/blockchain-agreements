@@ -21,7 +21,6 @@ export async function fetchSignatureRequests(web3: any) {
             // Verify that signer is same user that is currently signed in
             // Otherwise, do not append to signatures array
             if (signature.signer === web3.account[0]) {
-                console.log(signature);
                 signatures.push({...signature, id: i});
             }   
         }
