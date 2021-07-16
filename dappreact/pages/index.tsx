@@ -47,7 +47,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-          <span><b>Address:</b> {web3?.account[0]}</span> <br />
+          <span><b>Your Blockchain Address:</b> {web3?.account[0]}</span> <br />
           <span>Created by Justin Johnson, Akanksha Mehrotra, Kate Hueter, Ragav Khator, Andrew DaRe, Joanie Martinez and Ishmael Riles</span>
       </footer>
     </div>
