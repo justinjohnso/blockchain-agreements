@@ -34,7 +34,10 @@ export default function Create() {
         <p className={styles.description}>
           Create a signature request
         </p>
-        <Link href='/'>Home</Link>
+        <div style={{marginBottom: '32px'}}>
+        <Link href='/'>Home</Link> |
+        <Link href='/sent'> Sent requests</Link>
+        </div>
         <label style={{marginBottom: '8px'}}>Request name</label>
         <input onChange={(e) => setName(e.target.value)} style={{width: '100%', marginBottom: '16px'}}/>
         <label style={{marginBottom: '8px'}}>Message</label>
