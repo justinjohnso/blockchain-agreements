@@ -38,7 +38,7 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Smart eSignatures, powered by Ethereum
+          Smart eSignatures, powered by the Polygon Blockchain Network
         </p>
         <a href='/create' style={{color: 'blue', marginBottom: '32px'}}>Create a request</a>
         <div className={styles.grid}>
