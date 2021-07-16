@@ -87,3 +87,5 @@ sw.*
 
 # Mac OSX
 .DS_Store
+
+dappreact/node_modules

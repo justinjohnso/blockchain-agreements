@@ -1,14 +1,29 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { useContext, useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import { useAccount } from '../hooks/useAccount';
-import Web3 from 'web3';
+import { useEffect, useState } from 'react';
+import { initiateAgreement, signAgreement, fetchSignatureRequests } from '../utils/actions';
+import SignatureRequests from '../components/signatureRequests';
 
 export default function Home() {
+  const [signatures, setSignatures] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const web3 = useAccount();
 
-  const w3 = useAccount();
-  
+  useEffect(async () => {
+    if (isLoading) {
+      handleLoad()
+    }
+  }, [web3, isLoading]);
+
+  async function handleLoad() {
+    const signaturesFromChain = await fetchSignatureRequests(web3);
+    if (signaturesFromChain !== 'error') {
+      setSignatures(signaturesFromChain);
+      setIsLoading(false);
+    }
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -27,39 +42,14 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          {signatures.length === 0 ? <h2>No requests.</h2> : <SignatureRequests signatureRequests={signatures} signAgreement={signAgreement} />}
+          <a onClick={() => initiateAgreement(web3)}>SIGN</a>       
         </div>
       </main>
 
       <footer className={styles.footer}>
-          <span><b>Address:</b> {w3?.account}</span> <br />
-          <span>Created by Justin Johnson, Akanksha Mehrotra, Kate Hueter, Ragav Khator, Andrew DaRe, Kate Hueter, Joanie Martinez and Ishmael Riles</span>
+          <span><b>Address:</b> {web3?.account[0]}</span> <br />
+          <span>Created by Justin Johnson, Akanksha Mehrotra, Kate Hueter, Ragav Khator, Andrew DaRe, Joanie Martinez and Ishmael Riles</span>
       </footer>
     </div>
   )
