@@ -1,17 +1,17 @@
 import { CONTRACT_ADDRESS } from '../config';
 import DocAgreementsABI from "./DocAgreementsABI.json";
 
-export async function initiateAgreement(web3, name, message, address) {
+export async function initiateAgreement(web3: any, name: string, message: string, address: string) {
     const docAgreement = new web3.eth.Contract(DocAgreementsABI.abi, CONTRACT_ADDRESS);
     const res = await docAgreement.methods.publishDocument(name, message, address).send({ from: web3.account[0] });
 }
 
-export async function signAgreement(web3, docId) {
+export async function signAgreement(web3: any, docId: number) {
     const docAgreement = new web3.eth.Contract(DocAgreementsABI.abi, CONTRACT_ADDRESS);
     const res = await docAgreement.methods.signDocument(docId).send({ from: web3.account[0] });
 }
 
-export async function fetchSignatureRequests(web3) {
+export async function fetchSignatureRequests(web3: any) {
     try {
         const signatures = [];
         const docAgreement = new web3.eth.Contract(DocAgreementsABI.abi, CONTRACT_ADDRESS);

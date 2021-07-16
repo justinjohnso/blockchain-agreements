@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css'
 import { useAccount } from '../hooks/useAccount';
 import { useState } from 'react';
 import { initiateAgreement } from '../utils/actions';
+import Link from 'next/link';
 
 export default function Create() {
   const [name, setName] = useState('');
@@ -33,7 +34,7 @@ export default function Create() {
         <p className={styles.description}>
           Create a signature request
         </p>
-        <a href='/' style={{color: 'blue', marginBottom: '32px'}}>Home</a>
+        <Link href='/'>Home</Link>
         <label style={{marginBottom: '8px'}}>Request name</label>
         <input onChange={(e) => setName(e.target.value)} style={{width: '100%', marginBottom: '16px'}}/>
         <label style={{marginBottom: '8px'}}>Message</label>
