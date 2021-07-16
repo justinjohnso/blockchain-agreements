@@ -1,11 +1,11 @@
 import styles from '../styles/Home.module.css';
 import { useAccount } from '../hooks/useAccount';
 
-export default function SignatureRequests({signatureRequests, signAgreement}) {
+export default function SignatureRequests({signatureRequests, signAgreement}: any) {
     const web3 = useAccount();
 
     function renderSignatures() {
-        return signatureRequests.map(request => (
+        return signatureRequests.map((request: any) => (
             request.isSigned ? 
             <div className={styles.card}>
                 <h2>{request.name} (SIGNED)</h2>

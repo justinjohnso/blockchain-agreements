@@ -4,12 +4,14 @@ import { useAccount } from '../hooks/useAccount';
 import { useEffect, useState } from 'react';
 import { signAgreement, fetchSignatureRequests } from '../utils/actions';
 import SignatureRequests from '../components/signatureRequests';
+import Link from 'next/link';
 
 export default function Home() {
   const [signatures, setSignatures] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const web3 = useAccount();
 
+  // @ts-ignore
   useEffect(async () => {
     if (isLoading) {
       handleLoad()
@@ -19,7 +21,7 @@ export default function Home() {
   async function handleLoad() {
     const signaturesFromChain = await fetchSignatureRequests(web3);
     if (signaturesFromChain !== 'error') {
-      setSignatures(signaturesFromChain);
+      setSignatures((signaturesFromChain as any));
       setIsLoading(false);
     }
   }
@@ -40,7 +42,7 @@ export default function Home() {
         <p className={styles.description}>
           Smart eSignatures, powered by Ethereum
         </p>
-        <a href='/create' style={{color: 'blue', marginBottom: '32px'}}>Create a request</a>
+        <Link href='/create'>Create a request</Link>
         <div className={styles.grid}>
           {signatures.length === 0 ? <h2>No requests.</h2> : <SignatureRequests signatureRequests={signatures} signAgreement={signAgreement} />}     
         </div>
