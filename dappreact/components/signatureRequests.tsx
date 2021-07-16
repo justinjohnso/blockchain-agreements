@@ -7,10 +7,10 @@ export default function SignatureRequests({signatureRequests, signAgreement}) {
     function renderSignatures() {
         return signatureRequests.map(request => (
             request.isSigned ? 
-            <p className={styles.card}>
-            <h2>{request.name} (SIGNED)</h2>
-            <p>{request.content}</p>
-        </p>
+            <div className={styles.card}>
+                <h2>{request.name} (SIGNED)</h2>
+                <p>{request.content}</p>
+            </div>
         :
             <a onClick={() => signAgreement(web3, request.id)} className={styles.card}>
                 <h2>{request.name} &rarr;</h2>
