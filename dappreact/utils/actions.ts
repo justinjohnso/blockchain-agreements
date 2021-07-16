@@ -1,9 +1,9 @@
 import { CONTRACT_ADDRESS } from '../config';
 import DocAgreementsABI from "./DocAgreementsABI.json";
 
-export async function initiateAgreement(web3) {
+export async function initiateAgreement(web3, name, message, address) {
     const docAgreement = new web3.eth.Contract(DocAgreementsABI.abi, CONTRACT_ADDRESS);
-    const res = await docAgreement.methods.publishDocument('Andrew1', 'Test stuffy', '0x61eE26E3E837a8EE69d6894e8FB3f65d05976d8a').send({ from: web3.account[0] });
+    const res = await docAgreement.methods.publishDocument(name, message, address).send({ from: web3.account[0] });
 }
 
 export async function signAgreement(web3, docId) {
