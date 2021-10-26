@@ -53,7 +53,7 @@ export default function Sent() {
 
       <footer className={styles.footer}>
           <span><b>Your Blockchain Address:</b> {web3?.account[0]}</span> <br />
-          <span>Created by the "Blockchain-Based Digital Agreements" Dropbox HackWeek team</span>
+          <span>Created by the &quot;Blockchain-Based Digital Agreements&quot; Dropbox HackWeek team</span>
       </footer>
     </div>
   )
