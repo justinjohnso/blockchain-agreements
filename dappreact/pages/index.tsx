@@ -47,7 +47,7 @@ export default function Home() {
         <Link href='/sent'> Sent requests</Link>
         </div>
         <div className={styles.grid}>
-          {signatures.length === 0 ? <h2>No requests.</h2> : <SignatureRequests signatureRequests={signatures} signAgreement={signAgreement} isSent={false} />}     
+          {signatures.length === 0 ? <h2>You have not received any requests.</h2> : <SignatureRequests signatureRequests={signatures} signAgreement={signAgreement} isSent={false} />}     
         </div>
       </main>
 

@@ -47,7 +47,7 @@ export default function Sent() {
         <Link href='/create'> Create a request</Link>
         </div>
         <div className={styles.grid}>
-          {signatures.length === 0 ? <h2>No sent requests.</h2> : <SignatureRequests signatureRequests={signatures} signAgreement={signAgreement} isSent={true} />}     
+          {signatures.length === 0 ? <h2>You have not sent any requests.</h2> : <SignatureRequests signatureRequests={signatures} signAgreement={signAgreement} isSent={true} />}     
         </div>
       </main>
 
