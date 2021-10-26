@@ -49,7 +49,7 @@ export default function Create() {
 
       <footer className={styles.footer}>
           <span><b>Your Blockchain Address:</b> {web3?.account[0]}</span> <br />
-          <span>Created by Justin Johnson, Akanksha Mehrotra, Kate Hueter, Ragav Khator, Andrew DaRe, Joanie Martinez and Ishmael Riles</span>
+          <span>Created by the "Blockchain-Based Digital Agreements" Dropbox HackWeek team</span>
       </footer>
     </div>
   )
